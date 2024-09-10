@@ -9,9 +9,10 @@ bst.build_tree(bst.sac(pre_tree))
 
 bst.pretty_print
 bst.insert(17)
-bst.delete(18)
-
 bst.pretty_print
+bst.delete(15)
+
+#bst.pretty_print
 second_tree = Tree.new
 #pre_tree_2 = second_tree.sort_and_compact([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 
@@ -32,14 +33,14 @@ alphabetree.insert("Kelly")
 alphabetree.insert("Norma")
 alphabetree.insert("Steve")
 alphabetree.insert("Anders")
-alphabetree.pretty_print
+#alphabetree.pretty_print
 puts "\n"
 
 #alphabetree.delete("Glaurung")
-alphabetree.delete("Andrew")
+#alphabetree.delete("Andrew")
 #alphabetree.delete("Norma")
 
-alphabetree.pretty_print
+#alphabetree.pretty_print
 alphabetree2 = Tree.new
 alphabetree2.build_tree(alphabetree2.sac(['Luna', 'Lucy', 'Odin', 'Alex', "Kelly", "Anders", 'Steve',"Adam"]))
 
