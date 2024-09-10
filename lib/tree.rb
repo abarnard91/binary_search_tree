@@ -83,17 +83,28 @@ class Tree
       
      #deletion at branch with two children 
     elsif (current_node.left_child.nil? == false && current_node.right_child.nil? == false)
-
-      ##until current_node
-      if prev_node.left_child == current_node
-        current_node_replacement = current_node.left_child
-        prev_node.left_child = current_node_replacement        
-        current_node_replacement.right_child = current_node.right_child
-      elsif prev_node.right_child == current_node
-        current_node_replacement = current_node.left_child
-        prev_node.right_child = current_node_replacement        
-        current_node_replacement.right_child = current_node.right_child
+      next_biggest_node = current_node.right_child
+      
+      until next_biggest_node.left_child.nil?
+        puts "in the left child loop"
+        puts next_biggest_node
+        prev_nbn = next_biggest_node
+        next_biggest_node = next_biggest_node.left_child
+        puts next_biggest_node
       end
+      next_biggest_node.left_child = current_node.left_child
+      next_biggest_node.right_child = current_node.right_child
+      puts "prev_nbm is  #{prev_nbn}"
+
+      # if prev_node.left_child == current_node
+      #   current_node_replacement = current_node.left_child
+      #   prev_node.left_child = current_node_replacement        
+      #   current_node_replacement.right_child = current_node.right_child
+      # elsif prev_node.right_child == current_node
+      #   current_node_replacement = current_node.left_child
+      #   prev_node.right_child = current_node_replacement        
+      #   current_node_replacement.right_child = current_node.right_child
+      # end
       current_node = nil
 
       
