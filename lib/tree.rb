@@ -94,7 +94,9 @@ class Tree
       end
       next_biggest_node.left_child = current_node.left_child
       next_biggest_node.right_child = current_node.right_child
-      puts "prev_nbm is  #{prev_nbn}"
+
+      prev_nbn.left_child = nil
+      puts "prev_nbn.left_child  is #{prev_nbn.left_child}"
 
       # if prev_node.left_child == current_node
       #   current_node_replacement = current_node.left_child
