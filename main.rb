@@ -7,10 +7,10 @@ bst = Tree.new
 
 bst.build_tree(bst.sac(pre_tree))
 
-bst.pretty_print
+#bst.pretty_print
 bst.insert(17)
-bst.pretty_print
-bst.delete(15)
+#bst.pretty_print
+#bst.delete(15)
 
 #bst.pretty_print
 second_tree = Tree.new
@@ -33,16 +33,17 @@ alphabetree.insert("Kelly")
 alphabetree.insert("Norma")
 alphabetree.insert("Steve")
 alphabetree.insert("Anders")
-#alphabetree.pretty_print
+alphabetree.pretty_print
 puts "\n"
 
-#alphabetree.delete("Glaurung")
-#alphabetree.delete("Andrew")
-#alphabetree.delete("Norma")
+alphabetree.delete("Glaurung")
+alphabetree.delete("Lucy")
+alphabetree.delete("Norma")
+alphabetree.delete("Alex")
 
-#alphabetree.pretty_print
+alphabetree.pretty_print
 alphabetree2 = Tree.new
-alphabetree2.build_tree(alphabetree2.sac(['Luna', 'Lucy', 'Odin', 'Alex', "Kelly", "Anders", 'Steve',"Adam"]))
+alphabetree2.build_tree(alphabetree2.sac(['Luna', 'Odin', "Kelly", "Anders", 'Steve',"Adam"]))
 
 puts "\n"
-#alphabetree2.pretty_print
+alphabetree2.pretty_print
