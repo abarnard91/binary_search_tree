@@ -62,15 +62,16 @@ class Tree
       if current_node.data > node
         prev_node = current_node
         current_node = current_node.left_child
-        puts "Going left current node is #{current_node.data} and prev_node is #{prev_node.data}"
+        #puts "Going left current node is #{current_node.data} and prev_node is #{prev_node.data}"
       elsif current_node.data < node 
         prev_node = current_node
         current_node = current_node.right_child
-        puts "Going right current node is #{current_node.data} and prev_node is #{prev_node.data}"
+        #puts "Going right current node is #{current_node.data} and prev_node is #{prev_node.data}"
       else
         break
       end
     end
+    puts current_node.data
     #deletion at end node
     if current_node.left_child.nil? && current_node.right_child.nil?
       if prev_node.left_child == current_node
@@ -86,25 +87,35 @@ class Tree
       next_biggest_node = current_node.right_child
       
       until next_biggest_node.left_child.nil?
-        puts "in the left child loop"
-        puts next_biggest_node
+        #puts "in the left child loop"
+        #puts "prev node is #{next_biggest_node.data}"
         prev_nbn = next_biggest_node
         next_biggest_node = next_biggest_node.left_child
-        puts next_biggest_node
+        #puts "next biggest node is #{next_biggest_node.data}"
       end
+      puts "current node is #{current_node.data} next biggest node is #{next_biggest_node.data}"
       next_biggest_node.left_child = current_node.left_child
-      next_biggest_node.right_child = current_node.right_child
-      puts "prev_nbm is  #{prev_nbn}"
+      if current_node.right_child.data == next_biggest_node.data
+        current_node.right_child = next_biggest_node.right_child
+      else
+        next_biggest_node.right_child = current_node.right_child
+      end
 
-      # if prev_node.left_child == current_node
-      #   current_node_replacement = current_node.left_child
-      #   prev_node.left_child = current_node_replacement        
-      #   current_node_replacement.right_child = current_node.right_child
-      # elsif prev_node.right_child == current_node
-      #   current_node_replacement = current_node.left_child
-      #   prev_node.right_child = current_node_replacement        
-      #   current_node_replacement.right_child = current_node.right_child
-      # end
+      
+      prev_nbn.left_child = nil unless prev_nbn.nil?
+      #puts "prev_nbn.left_child  is #{prev_nbn.left_child}"
+      
+      unless prev_node.nil?
+
+        if prev_node.left_child == current_node
+          prev_node.left_child = next_biggest_node        
+
+        elsif prev_node.right_child == current_node
+          prev_node.right_child = next_biggest_node        
+        end
+      else
+        @root = next_biggest_node
+      end
       current_node = nil
 
       
