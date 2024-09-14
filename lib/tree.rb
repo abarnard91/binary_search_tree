@@ -57,8 +57,8 @@ class Tree
   def delete(node)
     
     current_node = @root
-    
-    until current_node.nil?
+    #find the node that is going to be deleted
+    until current_node.nil? 
       if current_node.data > node
         prev_node = current_node
         current_node = current_node.left_child
@@ -71,7 +71,8 @@ class Tree
         break
       end
     end
-    puts current_node.data
+    #puts current_node.data
+
     #deletion at end node
     if current_node.left_child.nil? && current_node.right_child.nil?
       if prev_node.left_child == current_node
@@ -93,7 +94,7 @@ class Tree
         next_biggest_node = next_biggest_node.left_child
         #puts "next biggest node is #{next_biggest_node.data}"
       end
-      puts "current node is #{current_node.data} next biggest node is #{next_biggest_node.data}"
+      #puts "current node is #{current_node.data} next biggest node is #{next_biggest_node.data}"
       next_biggest_node.left_child = current_node.left_child
       if current_node.right_child.data == next_biggest_node.data
         current_node.right_child = next_biggest_node.right_child
@@ -102,10 +103,10 @@ class Tree
       end
 
       
-      prev_nbn.left_child = nil unless prev_nbn.nil?
+      prev_nbn.left_child = nil unless prev_nbn.nil? #the unless is if the next biggest node doesn't have a left child
       #puts "prev_nbn.left_child  is #{prev_nbn.left_child}"
       
-      unless prev_node.nil?
+      unless prev_node.nil? #ie if the node deleted is the root
 
         if prev_node.left_child == current_node
           prev_node.left_child = next_biggest_node        
@@ -165,6 +166,25 @@ class Tree
   end
 
   #Write a #level_order method which accepts a block. This method should traverse the tree in breadth-first level order and yield each node to the provided block. This method can be implemented using either iteration or recursion (try implementing both!). The method should return an array of values if no block is given. Tip: You will want to use an array acting as a queue to keep track of all the child nodes that you have yet to traverse, and to add new ones to the list (video on level order traversal).
+  def level_order
+    queue = Array.new
+    level_order_array = Array.new
+    #current_node = @root
+    #explore node & add children to queue array in FIFO explore each child and add subsequent children to queue until queue empty
+    queue << @root
+    until queue.empty?
+      level_order_array << queue[0].data
+      queue << queue[0].left_child unless queue[0].left_child.nil?
+      queue << queue[0].right_child unless queue[0].right_child.nil?
+      queue.shift
+    end
+    if block_given?
+      yield(node)
+    else
+      puts "#{level_order_array}"
+    end
+
+  end
 
   #Write #inorder, #preorder, and #postorder methods that accepts a block. Each method should traverse the tree in their respective depth-first order and yield each node to the provided block. The methods should return an array of values if no block is given.
 

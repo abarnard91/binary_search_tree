@@ -36,14 +36,10 @@ alphabetree.insert("Anders")
 alphabetree.pretty_print
 puts "\n"
 
-alphabetree.delete("Glaurung")
-alphabetree.delete("Lucy")
-alphabetree.delete("Norma")
-alphabetree.delete("Alex")
+#alphabetree.delete("Glaurung")
+#alphabetree.delete("Lucy")
+#alphabetree.delete("Norma")
+#alphabetree.delete("Alex")
 
-alphabetree.pretty_print
-alphabetree2 = Tree.new
-alphabetree2.build_tree(alphabetree2.sac(['Luna', 'Odin', "Kelly", "Anders", 'Steve',"Adam"]))
+alphabetree.level_order
 
-puts "\n"
-alphabetree2.pretty_print
