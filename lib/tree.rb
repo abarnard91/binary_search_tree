@@ -245,6 +245,9 @@ class Tree
   end
 
   #Write a #height method that accepts a node and returns its height. Height is defined as the number of edges in longest path from a given node to a leaf node.
+  #ie height of Alex node is 3, height of Luna is 2, height of Andrew is 2, height of Odin is 1
+  def height(node)
+  end
 
   #Write a #depth method that accepts a node and returns its depth. Depth is defined as the number of edges in path from a given node to the tree’s root node.
 
