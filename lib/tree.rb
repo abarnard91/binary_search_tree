@@ -179,14 +179,70 @@ class Tree
       queue.shift
     end
     if block_given?
-      yield(node)
+      level_order_array.each do |node|
+        yield(node)
+      end
     else
-      puts "#{level_order_array}"
+      #puts "#{level_order_array}"
+      return level_order_array
     end
 
   end
 
   #Write #inorder, #preorder, and #postorder methods that accepts a block. Each method should traverse the tree in their respective depth-first order and yield each node to the provided block. The methods should return an array of values if no block is given.
+  #inorder: root -> left -> Right
+  def inorder(node = @root, inorder_arr = [])
+    if node.nil?
+      return inorder_arr
+    else 
+      inorder(node.left_child, inorder_arr)
+      inorder_arr << node.data
+      inorder(node.right_child, inorder_arr)
+    end
+    if block_given?
+      inorder_arr.each do |node|
+        yield(node)
+      end
+    else
+      return inorder_arr
+    end
+  end
+
+  #preorder: left -> root -> right
+  def preorder(node = @root, preorder_arr = [])
+    if node.nil?
+      return preorder_arr
+    else 
+      preorder_arr << node.data
+      preorder(node.left_child, preorder_arr)
+      preorder(node.right_child, preorder_arr)
+    end
+    if block_given?
+      preorder_arr.each do |node|
+        yield(node)
+      end
+    else 
+      return preorder_arr
+    end
+  end
+  
+  #postorder: left -> right -> root
+  def postorder(node = @root, postorder_arr = [])
+    if node.nil?
+      return postorder_arr
+    else 
+      postorder(node.left_child, postorder_arr)
+      postorder(node.right_child, postorder_arr)
+      postorder_arr << node.data
+    end
+    if block_given?
+      postorder_arr.each do |node|
+        yield(node)
+      end
+    else
+      return postorder_arr
+    end
+  end
 
   #Write a #height method that accepts a node and returns its height. Height is defined as the number of edges in longest path from a given node to a leaf node.
 

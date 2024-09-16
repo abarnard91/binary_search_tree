@@ -40,6 +40,32 @@ puts "\n"
 #alphabetree.delete("Lucy")
 #alphabetree.delete("Norma")
 #alphabetree.delete("Alex")
+#puts "level order #{alphabetree.level_order}"
+name_array= []
+cool_array = []
+lame_arr = []
+#alphabetree.level_order do |node|
+    #full_name = node.concat(" Barnard")
+    #name_array << full_name
+#end
+#puts "#{name_array}"
+#puts "pre order #{alphabetree.preorder}"
+# alphabetree.preorder do |node|
+#     full_name = node.concat(" Barnard")
+#     name_array << full_name
+# end
+# puts "pre : #{name_array}"
 
-alphabetree.level_order
+# #puts "in order #{alphabetree.inorder}"
+# alphabetree.inorder do |node|
+#     full_name = node.concat(" is cool")
+#     cool_array << full_name
+# end
+# puts "in : #{cool_array}"
+#puts "post order #{alphabetree.postorder}"
+#alphabetree.postorder do |node|
+    #full_name = node.concat(" NOT")
+    #lame_arr << full_name
+#end
+#puts "post : #{lame_arr}"
 
