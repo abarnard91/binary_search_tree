@@ -149,10 +149,8 @@ class Tree
     until current_node.nil?
       
       if current_node.data > node
-        previous_node = current_node
         current_node = current_node.left_child
       elsif current_node.data < node 
-        previous_node = current_node
         current_node = current_node.right_child
       else
         break
@@ -166,11 +164,10 @@ class Tree
   end
 
   #Write a #level_order method which accepts a block. This method should traverse the tree in breadth-first level order and yield each node to the provided block. This method can be implemented using either iteration or recursion (try implementing both!). The method should return an array of values if no block is given. Tip: You will want to use an array acting as a queue to keep track of all the child nodes that you have yet to traverse, and to add new ones to the list (video on level order traversal).
+  #explore node & add children to queue array in FIFO explore each child and add subsequent children to queue until queue empty
   def level_order
     queue = Array.new
     level_order_array = Array.new
-    #current_node = @root
-    #explore node & add children to queue array in FIFO explore each child and add subsequent children to queue until queue empty
     queue << @root
     until queue.empty?
       level_order_array << queue[0].data
@@ -247,11 +244,73 @@ class Tree
   #Write a #height method that accepts a node and returns its height. Height is defined as the number of edges in longest path from a given node to a leaf node.
   #ie height of Alex node is 3, height of Luna is 2, height of Andrew is 2, height of Odin is 1
   def height(node)
+    found_node = self.find(node) #find the nodes location in the tree
+    left = found_node.left_child
+    right = found_node.right_child
+    left_count =  0
+    right_count = 0
+    unless left.nil?
+      left_count += 1
+      until left.left_child.nil? && left.right_child.nil?
+        if left.left_child.nil?
+          left = left.right_child
+        else
+          left = left.left_child
+        end
+        left_count +=1
+        # puts left
+        # puts "left count is #{left_count}"
+      end
+    end
+    unless right.nil?
+      right_count += 1
+      until right.left_child.nil? && right.right_child.nil? 
+        if right.left_child.nil?
+          right = right.right_child
+        else
+          right = right.left_child
+        end
+        right_count += 1
+        # puts right
+        # puts "right count is #{right_count}"
+      end
+    end
+
+    if left_count >= right_count
+      return left_count
+    else
+      return right_count
+    end
+
   end
 
   #Write a #depth method that accepts a node and returns its depth. Depth is defined as the number of edges in path from a given node to the tree’s root node.
+  #ie depth of Alex is 1, depth of Kelly is 4
+  def depth(node)
+    current_node = @root
+    depth = 0
 
-  #Write a #depth method that accepts a node and returns its depth. Depth is defined as the number of edges in path from a given node to the tree’s root node.
+    until current_node.nil?
+      
+      if current_node.data > node
+        current_node = current_node.left_child
+      elsif current_node.data < node 
+        current_node = current_node.right_child
+      else
+        break
+      end
+      depth += 1
+    end
+    if current_node.nil?
+      return "Node not found"
+    else
+      return depth
+    end
+  end
+
+
+  #Write a #balanced? method that checks if the tree is balanced. A balanced tree is one where the difference between heights of left subtree and right subtree of every node is not more than 1.
+
 
   #Write a #rebalance method which rebalances an unbalanced tree. Tip: You’ll want to use a traversal method to provide a new array to the #build_tree method.
 

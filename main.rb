@@ -33,6 +33,10 @@ alphabetree.insert("Kelly")
 alphabetree.insert("Norma")
 alphabetree.insert("Steve")
 alphabetree.insert("Anders")
+alphabetree.insert("Anderson")
+alphabetree.insert("Aldis")
+alphabetree.insert("Amy")
+alphabetree.insert("Amber")
 alphabetree.pretty_print
 puts "\n"
 
@@ -69,3 +73,6 @@ lame_arr = []
 #end
 #puts "post : #{lame_arr}"
 
+#puts alphabetree.height("Alex"), alphabetree.height("Luna"), alphabetree.height("Anders")
+
+puts alphabetree.depth("Kelly")
