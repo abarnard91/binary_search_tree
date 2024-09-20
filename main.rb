@@ -75,4 +75,6 @@ lame_arr = []
 
 #puts alphabetree.height("Alex"), alphabetree.height("Luna"), alphabetree.height("Anders")
 
-puts alphabetree.depth("Kelly")
+#puts alphabetree.depth("Kelly")
+
+puts alphabetree.balanced?

@@ -310,6 +310,16 @@ class Tree
 
 
   #Write a #balanced? method that checks if the tree is balanced. A balanced tree is one where the difference between heights of left subtree and right subtree of every node is not more than 1.
+  def balanced?
+    left = self.height(@root.left_child)
+    right = self.height(@root.right_child)
+    if ((left-right).abs) > 1
+      return false
+    else 
+      return true
+    end
+
+  end
 
 
   #Write a #rebalance method which rebalances an unbalanced tree. Tip: You’ll want to use a traversal method to provide a new array to the #build_tree method.
