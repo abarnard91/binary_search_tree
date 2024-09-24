@@ -1,25 +1,6 @@
 require_relative("lib/node.rb")
 require_relative("lib/tree.rb")
 
-pre_tree = [1,3,6,9,12,15,18,21]
-
-bst = Tree.new
-
-bst.build_tree(bst.sac(pre_tree))
-
-#bst.pretty_print
-bst.insert(17)
-#bst.pretty_print
-#bst.delete(15)
-
-#bst.pretty_print
-second_tree = Tree.new
-#pre_tree_2 = second_tree.sort_and_compact([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-
-
-#second_tree.build_tree(second_tree.sac([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-
-#second_tree.pretty_print
 
 alphabetree = Tree.new
 
@@ -37,8 +18,7 @@ alphabetree.insert("Anderson")
 alphabetree.insert("Aldis")
 alphabetree.insert("Amy")
 alphabetree.insert("Amber")
-alphabetree.pretty_print
-puts "\n"
+#alphabetree.pretty_print
 
 #alphabetree.delete("Glaurung")
 #alphabetree.delete("Lucy")
@@ -60,7 +40,7 @@ lame_arr = []
 # end
 # puts "pre : #{name_array}"
 
-# #puts "in order #{alphabetree.inorder}"
+#puts "in order #{alphabetree.inorder}"
 # alphabetree.inorder do |node|
 #     full_name = node.concat(" is cool")
 #     cool_array << full_name
@@ -77,4 +57,35 @@ lame_arr = []
 
 #puts alphabetree.depth("Kelly")
 
-puts alphabetree.balanced?
+#puts alphabetree.balanced?
+#alphabetree.rebalance
+#alphabetree.pretty_print
+
+random_bst= Tree.new
+random_bst.build_tree(random_bst.sac(Array.new(15){rand(1..100)}))
+random_bst.pretty_print
+puts random_bst.balanced?
+#puts "level order#{random_bst.level_order}"
+#puts "pre order #{random_bst.preorder}"
+#puts "in order #{random_bst.inorder}"
+#puts "post order #{random_bst.postorder}"
+
+for i in 1..3  
+    i = rand(100..900)
+    random_bst.insert(i)
+end
+for i in 1..3
+    i = rand(0-9)
+    random_bst.insert(i)
+end
+
+
+random_bst.pretty_print
+puts random_bst.balanced?
+random_bst.rebalance
+puts random_bst.balanced?
+#puts "level order#{random_bst.level_order}"
+#puts "pre order #{random_bst.preorder}"
+#puts "in order #{random_bst.inorder}"
+#puts "post order #{random_bst.postorder}"
+random_bst.pretty_print

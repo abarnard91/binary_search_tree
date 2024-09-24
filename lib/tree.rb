@@ -45,6 +45,8 @@ class Tree
         current_node = current_node.left_child
       elsif current_node.data < data 
         current_node = current_node.right_child
+      else
+        return "node already exists"
       end
     end
     if prev_node.data > data
@@ -75,10 +77,15 @@ class Tree
 
     #deletion at end node
     if current_node.left_child.nil? && current_node.right_child.nil?
-      if prev_node.left_child == current_node
-        prev_node.left_child = nil
-      elsif prev_node.right_child == current_node
-       prev_node.right_child = nil
+      #for root w/ no children situation
+      if current_node == @root
+        @root = nil
+      else
+        if prev_node.left_child == current_node
+          prev_node.left_child = nil
+        elsif prev_node.right_child == current_node
+        prev_node.right_child = nil
+        end
       end
       current_node = nil
 
@@ -252,27 +259,27 @@ class Tree
     unless left.nil?
       left_count += 1
       until left.left_child.nil? && left.right_child.nil?
-        if left.left_child.nil?
-          left = left.right_child
-        else
+        if left.right_child.nil?
           left = left.left_child
+        else
+          left = left.right_child 
         end
         left_count +=1
-        # puts left
-        # puts "left count is #{left_count}"
+        #puts left
+        #puts "left count is #{left_count}"
       end
     end
     unless right.nil?
       right_count += 1
       until right.left_child.nil? && right.right_child.nil? 
-        if right.left_child.nil?
-          right = right.right_child
-        else
+        if right.right_child.nil?
           right = right.left_child
+        else
+          right = right.right_child
         end
         right_count += 1
-        # puts right
-        # puts "right count is #{right_count}"
+         #puts right
+        #puts "right count is #{right_count}"
       end
     end
 
@@ -311,18 +318,31 @@ class Tree
 
   #Write a #balanced? method that checks if the tree is balanced. A balanced tree is one where the difference between heights of left subtree and right subtree of every node is not more than 1.
   def balanced?
-    left = self.height(@root.left_child)
-    right = self.height(@root.right_child)
-    if ((left-right).abs) > 1
-      return false
-    else 
-      return true
+    self.level_order do |i|
+      node = self.find(i)
+      if node.left_child.nil? == false && node.right_child.nil? == false
+        left = self.height(node.left_child.data)
+        right = self.height(node.right_child.data)
+        #puts "left is #{left} right is #{right}"
+        if ((left-right).abs) > 1
+          return false 
+
+        end
+      end
     end
+    return true
 
   end
 
 
   #Write a #rebalance method which rebalances an unbalanced tree. Tip: You’ll want to use a traversal method to provide a new array to the #build_tree method.
+  def rebalance
+    new_arr = self.inorder
+    self.postorder do |node|
+      self.delete(node)
+    end
+    self.build_tree(new_arr)
+  end
 
 
 
