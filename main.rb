@@ -2,32 +2,32 @@ require_relative("lib/node.rb")
 require_relative("lib/tree.rb")
 
 
-alphabetree = Tree.new
+# alphabetree = Tree.new
 
-alphabetree.build_tree(alphabetree.sac(['Luna', 'Lucy', 'Odin', 'Alex', 'Andrew']))
+# alphabetree.build_tree(alphabetree.sac(['Luna', 'Lucy', 'Odin', 'Alex', 'Andrew']))
 
-#alphabetree.pretty_print
+# #alphabetree.pretty_print
 
-alphabetree.insert('Glaurung')
-alphabetree.insert('Adam')
-alphabetree.insert("Kelly")
-alphabetree.insert("Norma")
-alphabetree.insert("Steve")
-alphabetree.insert("Anders")
-alphabetree.insert("Anderson")
-alphabetree.insert("Aldis")
-alphabetree.insert("Amy")
-alphabetree.insert("Amber")
-#alphabetree.pretty_print
+# alphabetree.insert('Glaurung')
+# alphabetree.insert('Adam')
+# alphabetree.insert("Kelly")
+# alphabetree.insert("Norma")
+# alphabetree.insert("Steve")
+# alphabetree.insert("Anders")
+# alphabetree.insert("Anderson")
+# alphabetree.insert("Aldis")
+# alphabetree.insert("Amy")
+# alphabetree.insert("Amber")
+# #alphabetree.pretty_print
 
-#alphabetree.delete("Glaurung")
-#alphabetree.delete("Lucy")
-#alphabetree.delete("Norma")
-#alphabetree.delete("Alex")
-#puts "level order #{alphabetree.level_order}"
-name_array= []
-cool_array = []
-lame_arr = []
+# #alphabetree.delete("Glaurung")
+# #alphabetree.delete("Lucy")
+# #alphabetree.delete("Norma")
+# #alphabetree.delete("Alex")
+# #puts "level order #{alphabetree.level_order}"
+# name_array= []
+# cool_array = []
+# lame_arr = []
 #alphabetree.level_order do |node|
     #full_name = node.concat(" Barnard")
     #name_array << full_name
@@ -63,12 +63,12 @@ lame_arr = []
 
 random_bst= Tree.new
 random_bst.build_tree(random_bst.sac(Array.new(15){rand(1..100)}))
-random_bst.pretty_print
+#random_bst.pretty_print
 puts random_bst.balanced?
-#puts "level order#{random_bst.level_order}"
-#puts "pre order #{random_bst.preorder}"
-#puts "in order #{random_bst.inorder}"
-#puts "post order #{random_bst.postorder}"
+puts "level order#{random_bst.level_order}"
+puts "pre order #{random_bst.preorder}"
+puts "in order #{random_bst.inorder}"
+puts "post order #{random_bst.postorder}"
 
 for i in 1..3  
     i = rand(100..900)
@@ -80,12 +80,12 @@ for i in 1..3
 end
 
 
-random_bst.pretty_print
+#random_bst.pretty_print
 puts random_bst.balanced?
 random_bst.rebalance
 puts random_bst.balanced?
-#puts "level order#{random_bst.level_order}"
-#puts "pre order #{random_bst.preorder}"
-#puts "in order #{random_bst.inorder}"
-#puts "post order #{random_bst.postorder}"
-random_bst.pretty_print
+puts "level order#{random_bst.level_order}"
+puts "pre order #{random_bst.preorder}"
+puts "in order #{random_bst.inorder}"
+puts "post order #{random_bst.postorder}"
+#random_bst.pretty_print
